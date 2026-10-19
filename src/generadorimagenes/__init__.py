@@ -20,6 +20,8 @@ def main():
     # xpu - Grfica Intel iris
 
     prompt = input("Escribe el prompt de la imagen: ")
+    nombre = input("Nombre del archivo (sin .png): ").strip() or "imagen"
+    # Si se deja vacío se guarda como imagen.png
     negative_prompt = "low quality, blurry, distorted, text, watermark, extra fingers, deformed, mutated, poorly drawn, ugly, bad anatomy, oversaturated, grainy, cropped, unrealistic colors"
     print("Generando la imagen...")
 
@@ -32,5 +34,9 @@ def main():
         width=1024
     ).images[0]
 
-    imagen.save("pizza.png")
-    print("Imagen guardada !!!")
+    imagen.save(f"{nombre}.png")
+    print(f"Imagen guardada como {nombre}.png !!!")
+
+
+if __name__ == "__main__":
+    main()
